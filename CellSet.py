@@ -59,12 +59,23 @@ def jdefault(o):
     return o.__dict__
 
 if __name__ == '__main__':
-    cellSet = CellSet(2)
-    position_months = Position([Member("Jan"), Member("Feb"), Member("Mar"), Member("Apr")])
-    position_measures = Position([Member("pnl"), Member("count")])
+    position_months = Position([
+        Member("Jan"), Member("Jan"), 
+        Member("Feb"), Member("Feb"), 
+        Member("Mar"), Member("Mar"), 
+        Member("Apr"), Member("Apr")
+        ])
+    position_measures = Position([
+        Member("pnl"), Member("count"),
+        Member("pnl"), Member("count"),
+        Member("pnl"), Member("count"),
+        Member("pnl"), Member("count")
+        ])
     position_country = Position([Member("France"), Member("USA"), Member("Japan"), Member("England"), Member("Italy")])
-    cellSet.axis[0].Positions = [position_months, position_measures]
-    cellSet.axis[1].Positions = [position_country]
+    cellSet = CellSet(2)
+    cellSet.axis[0].Positions = [position_country]
+    cellSet.axis[1].Positions = [position_months, position_measures] # CJ, becareful, the members of the first position 
+    # have to be doubled in this case and the two positions must have the same length
     print "CellSet:"
     print "As a string: " + str(cellSet)
     print json.dumps(cellSet, default=jdefault) 

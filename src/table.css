@@ -9,6 +9,7 @@ table, th, td
 td
 {
 	color: black;
+	text-align: right;
 }
 th
 {

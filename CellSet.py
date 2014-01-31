@@ -2,6 +2,11 @@
 # coding: utf-8
 
 import json
+import random
+
+class Cells:
+    def __init__(self, n, m):
+        self.cells = [[random.randint(0,1000) for e in range(m)] for e in range(n)]
 
 class Member:
     def __init__(self, name):
@@ -40,8 +45,9 @@ class CellSet:
     """docstring for ClassName"""
     def __init__(self, nAxis):
         self.nAxis = nAxis
+        self.cells = None
         self.axis = []
-        for i in range(0, nAxis):
+        for i in range(nAxis):
             self.axis.append(Axis(i))
 
     def __repr__(self):
@@ -59,23 +65,26 @@ def jdefault(o):
     return o.__dict__
 
 if __name__ == '__main__':
-    position_months = Position([
-        Member("Jan"), Member("Jan"), 
-        Member("Feb"), Member("Feb"), 
-        Member("Mar"), Member("Mar"), 
-        Member("Apr"), Member("Apr")
-        ])
-    position_measures = Position([
-        Member("pnl"), Member("count"),
-        Member("pnl"), Member("count"),
-        Member("pnl"), Member("count"),
-        Member("pnl"), Member("count")
-        ])
-    position_country = Position([Member("France"), Member("USA"), Member("Japan"), Member("England"), Member("Italy")])
     cellSet = CellSet(2)
-    cellSet.axis[0].Positions = [position_country]
-    cellSet.axis[1].Positions = [position_months, position_measures] # CJ, becareful, the members of the first position 
-    # have to be doubled in this case and the two positions must have the same length
+    cellSet.axis[1].Positions = [
+    Position([Member("Jan"), Member("pnl")]),
+    Position([Member("Jan"), Member("count")]), 
+    Position([Member("Feb"), Member("pnl")]),
+    Position([Member("Feb"), Member("count")]), 
+    Position([Member("Mar"), Member("pnl")]),
+    Position([Member("Mar"), Member("count")]),
+    Position([Member("Apr"), Member("pnl")]),
+    Position([Member("Apr"), Member("count")])
+    ]
+    cellSet.axis[0].Positions = [
+    Position([Member("France")]),
+    Position([Member("USA")]),
+    # Position([Member("Japan")]),
+    Position([Member("England")]),
+    Position([Member("Italy")])
+    ]
+
+    cellSet.cells = Cells(8,4)
     print "CellSet:"
     print "As a string: " + str(cellSet)
     print json.dumps(cellSet, default=jdefault) 

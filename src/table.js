@@ -31,15 +31,15 @@ var Table = React.createClass({
     var color = this.state.color;
     return (
       <table><tbody>
-      {this.state.data.map(function(row) {
-        var r = row.map(function(cell) {
-          return <Cell cellValue={cell} color={color}/>;
-        });
+      {
+        this.state.data.map(function(row) {
+          var r = row.map(function(cell) {
+            return <Cell cellValue={cell} color={color}/>;
+          });
 
-        return (
-          <Row row={r}/>
-          );
-      })}
+          return (<Row row={r}/>);
+        })
+      }
       </tbody></table>
       );
   }

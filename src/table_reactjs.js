@@ -10,22 +10,26 @@ function range(start, end) {
 
 var i = 0;
 
-function getColor() {
-  if(i === 0) {
-    return "white";
-  } else {
-    return "red";
-  }
-}
-
 var Cell = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
-    return nextProps.cellValue != this.props.cellValue || nextProps.color == "white";
+    return nextProps.cellValue != this.props.cellValue;
   },
+  /* uncomment these two methods to see what has changed between updates */
+  // componentDidMount: function(rootNode){
+  // 	rootNode.className= "cell";
+  // },
+  // componentWillUpdate: function(){
+  // 	if(i>0 && this.getDOMNode() != null){
+  // 		this.getDOMNode().className= "cell2";
+  // 		var self = this;
+  // 		setTimeout(function(){
+  // 			self.getDOMNode().className= "";
+  // 		}, 2300);
+  // 	}
+  // },
   render: function () {
-    var style = {"backgroundColor": this.props.color};
     return (
-      <td style={style} key={this.props.key}>{this.props.cellValue}</td>
+      <td key={this.props.key}>{this.props.cellValue}</td>
      );
   }
 });
@@ -42,11 +46,9 @@ var Table = React.createClass({
 	getInitialState: function() {
 		return {
 			data: this.props.data,
-			color: this.props.color
 		};
 	},
 	render: function () {
-		var color = this.state.color;
 		var myData = this.state.data;
 
 		var a = myData.axis[0].Positions.length;
@@ -62,24 +64,24 @@ var Table = React.createClass({
 					var r = colArray.map(function(j) {
 						var key = 1/2*(i+j)*(i+j+1)+j;//Cantor function for a unique key
 						if(j<b && i<c)
-							return(<Cell cellValue={""} color={color} key={key}/>);
+							return(<Cell cellValue={""} key={key}/>);
 						else if(i<c && j>=b)
-							return(<Cell cellValue={myData.axis[0].Positions[j-b].Members[i].name} color={color} key={key}/>);
+							return(<Cell cellValue={myData.axis[0].Positions[j-b].Members[i].name} key={key}/>);
 						else if(i>=c && j<b)
-							return(<Cell cellValue={myData.axis[1].Positions[i-c].Members[j].name} color={color} key={key}/>);
+							return(<Cell cellValue={myData.axis[1].Positions[i-c].Members[j].name} key={key}/>);
 						else
-							return(<Cell cellValue={myData.cells.cells[i-c][j-b]} color={color} key={key}/>);
+							return(<Cell cellValue={myData.cells.cells[i-c][j-b]} key={key}/>);
 					});
 					return(<Row row={r} key={i}/>);
 				})
 			}
 			</tbody></table>
-			);
+			); 
 	}
 });
 
 var table = React.renderComponent(
-  <Table data={data} color={"white"}/>,
+  <Table data={data}/>,
   document.getElementById('pivotTable')
 );
 

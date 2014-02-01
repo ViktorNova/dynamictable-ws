@@ -13,6 +13,7 @@ var RequestButtons = React.createClass({
 		table.setState({color : "white"});
 	},
 	changeData: function(dataNew){
+		i = 1;
 		table.setState({data : dataNew, color : "red"});
 	},
 	render: function(){

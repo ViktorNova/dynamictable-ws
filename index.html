@@ -1,19 +1,26 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="src/table.css"/>
+    <!-- <link rel="stylesheet" type="text/css" href="src/table.css"/> -->
+    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
 
     <script src="src/react.js"></script>
     <script src="src/JSXTransformer.js"></script>
   </head>
   <body>
-  	<a href="javascript:WebSocketStart()">Run WebSocket</a>
-  	<!-- <a href="javascript:WebSocketStop()">Stop WebSocket</a> -->
-  	<div id="ws_info">No connexion</div>
-    <div id="table"></div>
 
-    <script type="text/javascript" src="src/data.js"></script>
-    <script type="text/jsx" src="src/table3.js"></script>
+  	<!-- <a href="javascript:WebSocketStart()">Run WebSocket</a>
+  	<div id="ws_info">No connexion</div>
+     -->
+
+    <div style="margin: 10px;">
+      <div id="requestButtons" style="margin-bottom: 10px;"></div>
+      <div id="pivotTable"></div>
+    </div>
+
+    <script type="text/jsx" src="src/dataForTest.js"></script>
+    <script type="text/jsx" src="src/table_reactjs.js"></script>
+    <script type="text/jsx" src="src/RequestButtons.js"></script>
 
   </body>
 </html>

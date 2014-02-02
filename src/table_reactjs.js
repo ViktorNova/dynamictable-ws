@@ -8,7 +8,7 @@ function range(start, end) {
     return foo;
 }
 
-var i = 0;
+var init = true;
 
 var Cell = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
@@ -19,7 +19,7 @@ var Cell = React.createClass({
   // 	rootNode.className= "cell";
   // },
   // componentWillUpdate: function(){
-  // 	if(i>0 && this.getDOMNode() != null){
+  // 	if(!init && this.getDOMNode() != null){
   // 		this.getDOMNode().className= "cell2";
   // 		var self = this;
   // 		setTimeout(function(){
@@ -79,6 +79,16 @@ var Table = React.createClass({
 			); 
 	}
 });
+
+var handlerReactjs = function(dataNew){
+	init = false;
+	table.setState({data : dataNew});
+}
+
+React.renderComponent(
+  <RequestButtons handler={handlerReactjs}/>,
+  document.getElementById('requestButtons')
+);
 
 var table = React.renderComponent(
   <Table data={data}/>,

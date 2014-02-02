@@ -15,18 +15,18 @@ var Cell = React.createClass({
     return nextProps.cellValue != this.props.cellValue;
   },
   /* uncomment these two methods to see what has changed between updates */
-  // componentDidMount: function(rootNode){
-  // 	rootNode.className= "cell";
-  // },
-  // componentWillUpdate: function(){
-  // 	if(!init && this.getDOMNode() != null){
-  // 		this.getDOMNode().className= "cell2";
-  // 		var self = this;
-  // 		setTimeout(function(){
-  // 			self.getDOMNode().className= "";
-  // 		}, 2300);
-  // 	}
-  // },
+  componentDidMount: function(rootNode){
+  	rootNode.className= "cell";
+  },
+  componentWillUpdate: function(){
+  	if(!init && this.getDOMNode() != null){
+  		this.getDOMNode().className= "cell2";
+  		var self = this;
+  		setTimeout(function(){
+  			self.getDOMNode().className= "";
+  		}, 2300);
+  	}
+  },
   render: function () {
     return (
       <td key={this.props.key}>{this.props.cellValue}</td>

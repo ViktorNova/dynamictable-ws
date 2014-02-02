@@ -4,24 +4,20 @@
 import tornado.ioloop
 import tornado.web
 import tornado.websocket
-import random
-import json
+# import random
+# import json
 import time
-import pdb
+# import pdb
 
 from tornado.options import define, options, parse_command_line
-from generator import generate_data
+# from generator import generate_data
+
+from generator2 import data1
 
 define("port", default=8888, help="run on the given port", type=int)
 
 # we gonna store clients in dictionary..
 clients = dict()
-
-def getData():
-   n = 10
-   row = random.randint(n,n)
-   col = random.randint(2*n,2*n)
-   return json.dumps(generate_data(row, col))
 
 class IndexHandler(tornado.web.RequestHandler):
     @tornado.web.asynchronous
@@ -46,7 +42,7 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 
         i = 0
         while i<self.n:
-            self.write_message(getData())
+            self.write_message(data1())
             i += 1
             if self.refresh != None and self.refresh > 0:
                 time.sleep(self.refresh)
@@ -58,7 +54,9 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
 app = tornado.web.Application([
     (r'/', IndexHandler),
     (r'/data/', WebSocketHandler),
-    (r"/src/(.*)", tornado.web.StaticFileHandler, {"path": "src"})
+    (r"/src/(.*)", tornado.web.StaticFileHandler, {"path": "src"}),
+    (r"/css/(.*)", tornado.web.StaticFileHandler, {"path": "css"}),
+    (r"/bootstrap/css/(.*)", tornado.web.StaticFileHandler, {"path": "./bootstrap/css"})
 ], debug=True)
 
 if __name__ == '__main__':

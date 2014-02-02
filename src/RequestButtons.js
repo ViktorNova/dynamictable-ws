@@ -18,6 +18,7 @@ var RequestButtons = React.createClass({
 		var self = this;
 		return (
 			<div>
+				<ReqButton title={"Reload"} className={"btn"} onclickHandler={this.changeData.bind(self, data)}/>
 				<ReqButton title={"Add Feb"} className={"btn"} onclickHandler={this.changeData.bind(self, data2)}/>
 				<ReqButton title={"Update cells"} className={"btn"} onclickHandler={this.changeData.bind(self, data3)}/>
 				<ReqButton title={"Rem Jap"} className={"btn"} onclickHandler={this.changeData.bind(self, data4)}/>

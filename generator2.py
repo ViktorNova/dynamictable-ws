@@ -2,38 +2,9 @@
 # coding: utf-8
 
 import json
-import random
+from CellSet import CellSet, Position, Member, Cells
 
-class Cells:
-    def __init__(self, n, m):
-        self.cells = [[random.randint(0,10) for e in range(m)] for e in range(n)]
-
-class Member:
-    def __init__(self, name):
-        self.name = name
-
-class Position:
-    def __init__(self, Members):
-        self.Members = Members
-
-class Axis:
-    """ n: 0 for columns, 1 for rows"""
-    def __init__(self, n):
-        self.n = n
-        self.Positions = []
-
-class CellSet:
-    def __init__(self, nAxis):
-        self.nAxis = nAxis
-        self.cells = None
-        self.axis = []
-        for i in range(nAxis):
-            self.axis.append(Axis(i))
-
-def jdefault(o):
-    return o.__dict__
-
-if __name__ == '__main__':
+def data1():
     cellSet = CellSet(2)
     cellSet.axis[1].Positions = [
     Position([Member("Jan"), Member("pnl")]),
@@ -71,24 +42,6 @@ if __name__ == '__main__':
     Position([Member("France"), Member("A4"), Member("B1")]),
     Position([Member("France"), Member("A4"), Member("B2")]),
 
-    # Position([Member("USA"), Member("A1"), Member("B1")]),
-    # Position([Member("USA"), Member("A1"), Member("B2")]),
-    # Position([Member("USA"), Member("A2"), Member("B1")]),
-    # Position([Member("USA"), Member("A2"), Member("B2")]),
-    # Position([Member("USA"), Member("A3"), Member("B1")]),
-    # Position([Member("USA"), Member("A3"), Member("B2")]),
-    # Position([Member("USA"), Member("A4"), Member("B1")]),
-    # Position([Member("USA"), Member("A4"), Member("B2")]),
-
-    # Position([Member("Japan"), Member("A1"), Member("B1")]),
-    # Position([Member("Japan"), Member("A1"), Member("B2")]),
-    # Position([Member("Japan"), Member("A2"), Member("B1")]),
-    # Position([Member("Japan"), Member("A2"), Member("B2")]),
-    # Position([Member("Japan"), Member("A3"), Member("B1")]),
-    # Position([Member("Japan"), Member("A3"), Member("B2")]),
-    # Position([Member("Japan"), Member("A4"), Member("B1")]),
-    # Position([Member("Japan"), Member("A4"), Member("B2")]),
-
     Position([Member("England"), Member("A1"), Member("B1")]),
     Position([Member("England"), Member("A1"), Member("B2")]),
     Position([Member("England"), Member("A2"), Member("B1")]),
@@ -97,11 +50,16 @@ if __name__ == '__main__':
     Position([Member("England"), Member("A3"), Member("B2")]),
     Position([Member("England"), Member("A4"), Member("B1")]),
     Position([Member("England"), Member("A4"), Member("B2")])
-    # Position([Member("Italy")])
     ]
 
     cellSet.cells = Cells(24,16)
-    print "CellSet:"
-    print json.dumps(cellSet, default=jdefault) 
-    # print json.dumps(cellSet, default=jdefault, sort_keys=True, indent=4, separators=(',', ': '))
+    return json.dumps(cellSet, default=jdefault)
 
+def jdefault(o):
+    return o.__dict__
+
+if __name__ == '__main__':
+    print data1()
+
+
+    

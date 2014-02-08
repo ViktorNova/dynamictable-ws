@@ -30,7 +30,7 @@ var Table = React.createClass({
   render: function () {
     var color = this.state.color;
     return (
-      <table><tbody>
+      <table>
       {
         this.state.data.map(function(row) {
           var r = row.map(function(cell) {
@@ -40,7 +40,7 @@ var Table = React.createClass({
           return (<Row row={r}/>);
         })
       }
-      </tbody></table>
+      </table>
       );
   }
 });
@@ -57,8 +57,17 @@ var data = [[1,2,3],[4,5,6],[7,8,9]];
 //data can be called from data.js file
 var table = React.renderComponent(
   <Table data={data} color={getColor(0)}/>,
-  document.getElementById('table')
+  document.getElementById('pivotTable')
 );
+
+function changeData(){
+  var newData = [[1,1,1],[1,1,1],[1,1,1],[1,1,1]];
+  table.setState({data : newData});
+}
+function changeData2(){
+  var newData = [[1,1],[1,1],[1,1],[1,1]];
+  table.setState({data : data});
+}
 
 fetch(1, 0, 0);
 

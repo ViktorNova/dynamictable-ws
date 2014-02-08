@@ -21,6 +21,7 @@ var RequestButtons = React.createClass({
 				<ReqButton title={"Reload"} className={"btn"} onclickHandler={this.changeData.bind(self, data)}/>
 				<ReqButton title={"Add Feb"} className={"btn"} onclickHandler={this.changeData.bind(self, data2)}/>
 				<ReqButton title={"Update cells"} className={"btn"} onclickHandler={this.changeData.bind(self, data3)}/>
+				<ReqButton title={"Drilldown US"} className={"btn"} onclickHandler={this.changeData.bind(self, data9)}/>
 				<ReqButton title={"Rem Jap"} className={"btn"} onclickHandler={this.changeData.bind(self, data4)}/>
 				<ReqButton title={"Rem Feb/Add Jap"} className={"btn"} onclickHandler={this.changeData.bind(self, data5)}/>
 				<ReqButton title={"Double CJ"} className={"btn"} onclickHandler={this.changeData.bind(self, data6)}/>

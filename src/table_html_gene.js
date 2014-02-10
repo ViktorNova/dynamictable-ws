@@ -19,7 +19,7 @@ var drawTable = function(data){
 		table.push("<tr>");
 		for(var j = 0; j<a+b; j +=1){
 			if(j<b && i<c)
-				table.push("<td></td>");
+				table.push("<td>uu</td>");
 			else if(i<c && j>=b)
 				table.push("<td>", data.axis[0].Positions[j-b].Members[i].name, "</td>");
 			else if(i>=c && j<b)

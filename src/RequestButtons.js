@@ -3,7 +3,7 @@
 var ReqButton = React.createClass({
 	render: function(){
 		return (
-			<button className={this.props.className} type="button" onClick={this.props.onclickHandler} style={{"margin-right":"5"}}>{this.props.title}</button>
+			<button className={this.props.className} type="button" onClick={this.props.onclickHandler}>{this.props.title}</button>
 			);
 	}
 });
@@ -17,8 +17,9 @@ var RequestButtons = React.createClass({
 	render: function(){
 		var self = this;
 		return (
-			<div>
-				<ReqButton title={"Reload"} className={"btn"} onclickHandler={this.changeData.bind(self, data)}/>
+			<div className={"btn-group"}>
+				<ReqButton title={"Run WS"} className={"btn btn-primary"} onclickHandler={WebSocketStart()}/>
+				<ReqButton title={"Reload"} className={"btn btn-success"} onclickHandler={this.changeData.bind(self, data)}/>
 				<ReqButton title={"Add Feb"} className={"btn"} onclickHandler={this.changeData.bind(self, data2)}/>
 				<ReqButton title={"Update cells"} className={"btn"} onclickHandler={this.changeData.bind(self, data3)}/>
 				<ReqButton title={"Drilldown US"} className={"btn"} onclickHandler={this.changeData.bind(self, data9)}/>

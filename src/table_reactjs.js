@@ -1,35 +1,51 @@
 /** @jsx React.DOM */
 
-function range(start, end) {
-    var foo = new Array();
-    for (var i = start; i < end; i++) {
-        foo.push(i);
-    }
-    return foo;
-}
-
-var init = true;
-
 var Cell = React.createClass({
   shouldComponentUpdate: function(nextProps, nextState) {
-    return nextProps.cellValue != this.props.cellValue;
+    return nextProps.cellValue != this.props.cellValue; 
   },
   /* uncomment these two methods to see what has changed between updates */
   // componentDidMount: function(rootNode){
-  // 	rootNode.className= "cell";
+  //  rootNode.className= "cell";
   // },
   // componentWillUpdate: function(){
-  // 	if(!init && this.getDOMNode() != null){
-  // 		this.getDOMNode().className= "cell2";
-  // 		var self = this;
-  // 		setTimeout(function(){
-  // 			self.getDOMNode().className= "";
-  // 		}, 2300);
-  // 	}
+  //  if(!init && this.getDOMNode() != null){
+  //    this.getDOMNode().className= "cell2";
+  //    var self = this;
+  //    setTimeout(function(){
+  //      self.getDOMNode().className= "";
+  //    }, 2300);
+  //  }
   // },
   render: function () {
     return (
-      <td key={this.props.key} colSpan={this.props.colspan}>{this.props.cellValue}</td>
+      <td key={this.props.key} rowSpan={this.props.rowspan} colSpan={this.props.colspan}>{this.props.cellValue}</td>
+     );
+  }
+});
+
+var Header = React.createClass({
+  shouldComponentUpdate: function(nextProps, nextState) {
+    return nextProps.cellValue != this.props.cellValue 
+    || nextProps.rowspan != this.props.rowspan 
+    || nextProps.colspan != this.props.colspan;
+  },
+  /* uncomment these two methods to see what has changed between updates */
+  // componentDidMount: function(rootNode){
+  //  rootNode.className= "cell";
+  // },
+  // componentWillUpdate: function(){
+  //  if(!init && this.getDOMNode() != null){
+  //    this.getDOMNode().className= "cell2";
+  //    var self = this;
+  //    setTimeout(function(){
+  //      self.getDOMNode().className= "";
+  //    }, 2300);
+  //  }
+  // },
+  render: function () {
+    return (
+      <th key={this.props.key} rowSpan={this.props.rowspan} colSpan={this.props.colspan}>{this.props.cellValue}</th>
      );
   }
 });
@@ -60,7 +76,6 @@ var Table = React.createClass({
 });
 
 var handlerReactjs = function(dataNew){
-	init = false;
 	table.setState({data : dataNew});
 }
 

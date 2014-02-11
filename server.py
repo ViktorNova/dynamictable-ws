@@ -12,7 +12,7 @@ import time
 from tornado.options import define, options, parse_command_line
 # from generator import generate_data
 
-from generator2 import data1
+from generator import data1
 
 define("port", default=8888, help="run on the given port", type=int)
 

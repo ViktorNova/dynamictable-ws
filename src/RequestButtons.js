@@ -18,7 +18,7 @@ var RequestButtons = React.createClass({
 		var self = this;
 		return (
 			<div className={"btn-group"}>
-				<ReqButton title={"Run WS"} className={"btn btn-primary"} onclickHandler={WebSocketStart()}/>
+				<ReqButton title={"Run WS"} className={"btn btn-primary"} onclickHandler={WebSocketStart.bind()}/>
 				<ReqButton title={"Reload"} className={"btn btn-success"} onclickHandler={this.changeData.bind(self, data)}/>
 				<ReqButton title={"Add Feb"} className={"btn"} onclickHandler={this.changeData.bind(self, data2)}/>
 				<ReqButton title={"Update cells"} className={"btn"} onclickHandler={this.changeData.bind(self, data3)}/>

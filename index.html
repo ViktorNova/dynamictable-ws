@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
-    <link rel="stylesheet" type="text/css" href="css/pivottable.css"/>
+<head>
+  <!-- Boostrap css for buttons + table and animations for cells -->
+  <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+  <link rel="stylesheet" type="text/css" href="css/pivottable.css"/>
 
-    <script src="src/react.js"></script>
-    <script src="src/JSXTransformer.js"></script>
-   
-    <script type="text/jsx" src="src/websocket.js"></script>
-    <script type="text/jsx" src="src/dataForTest.js"></script>
-    <script type="text/jsx" src="src/RequestButtons.js"></script>
-    <script type="text/jsx" src="src/table_algo.js"></script>
-    <script type="text/jsx" src="src/table_reactjs.js"></script>
-    
-  </head>
-  <body>
+  <!-- load React library -->
+  <script src="src/react.js"></script>
+  <script src="src/JSXTransformer.js"></script>
 
-    <div style="margin: 10px;">
-      <h3>Pivot table</h3>
+  <!-- function to open a websocket-->
+  <script type="text/jsx" src="src/websocket.js"></script>
+  <!-- hard coded data in JSON format-->
+  <script type="text/jsx" src="src/dataForTest.js"></script>
+  <!-- Buttons on the top of the app -->
+  <script type="text/jsx" src="src/RequestButtons.js"></script>
+  <!-- rendering table algorithm, mainly pure JS -->
+  <script type="text/jsx" src="src/table_algo.js"></script>
+  <!-- rendering React table -->
+  <script type="text/jsx" src="src/table_reactjs.js"></script>
 
-      <div id="requestButtons" style="margin-bottom: 15px;"></div>
+</head>
+<body>
 
-      <div id="pivotTable"></div>
-    </div>
+  <div style="margin: 10px;">
+    <h3>Pivot table</h3>
+    <div id="requestButtons" style="margin-bottom: 15px;"></div>
+    <div id="pivotTable"></div>
+  </div>
 
 
-  </body>
+</body>
 </html>

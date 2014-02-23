@@ -9,24 +9,42 @@
   <script src="src/react.js"></script>
   <script src="src/JSXTransformer.js"></script>
 
-  <!-- function to open a websocket-->
-  <script type="text/jsx" src="src/websocket.js"></script>
   <!-- hard coded data in JSON format-->
   <script type="text/jsx" src="src/dataForTest.js"></script>
-  <!-- Buttons on the top of the app -->
-  <script type="text/jsx" src="src/RequestButtons.js"></script>
   <!-- rendering table algorithm, mainly pure JS -->
   <script type="text/jsx" src="src/table_algo.js"></script>
+  <!-- function to open a websocket-->
+  <script type="text/jsx" src="src/websocket.js"></script>
+  <!-- Buttons on the top of the app -->
+  <script type="text/jsx" src="src/RequestButtons.js"></script>
   <!-- rendering React table -->
   <script type="text/jsx" src="src/table_reactjs.js"></script>
+  <!-- rendering wizard -->
+  <script type="text/jsx" src="src/wizard.js"></script>
 
 </head>
 <body>
 
-  <div style="margin: 10px;">
+<!--   <div style="margin: 10px;">
     <h3>Pivot table</h3>
+    <textarea rows="3"></textarea>
     <div id="requestButtons" style="margin-bottom: 15px;"></div>
     <div id="pivotTable"></div>
+  </div> -->
+
+  <div class="container-fluid">
+  <h3>Pivot table</h3>
+    <div class="row-fluid">
+      <div class="span2">
+        <!--Sidebar content // wizard -->
+        <div id="wizard"></div>
+      </div>
+      <div class="span10">
+        <!--Body content // pivot table-->
+        <div id="requestButtons" style="margin-bottom: 15px;"></div>
+        <div id="pivotTable"></div>
+      </div>
+    </div>
   </div>
 
 

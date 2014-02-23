@@ -10,8 +10,6 @@ var ReqButton = React.createClass({
 
 var RequestButtons = React.createClass({
 	changeData: function(dataNew){
-		// i = 1;
-		// table.setState({data : dataNew});
 		this.props.handler(dataNew);
 	},
 	render: function(){

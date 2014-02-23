@@ -5,7 +5,7 @@ import tornado.ioloop
 import tornado.web
 import tornado.websocket
 # import random
-# import json
+import json
 import time
 # import pdb
 
@@ -38,14 +38,15 @@ class WebSocketHandler(tornado.websocket.WebSocketHandler):
         when we receive some message we want some message handler..
         for this example i will just print message to console
         """
-        print message
+        data = json.loads(message)
+        cells = data['cells']['cells'] # it's a matrix
 
         i = 0
-        while i<self.n:
-            self.write_message(data1())
-            i += 1
-            if self.refresh != None and self.refresh > 0:
-                time.sleep(self.refresh)
+        # while i<self.n:
+        #     self.write_message(data1())
+        #     i += 1
+        #     if self.refresh != None and self.refresh > 0:
+        #         time.sleep(self.refresh)
 
         
     def on_close(self):

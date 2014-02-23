@@ -33,10 +33,10 @@ def data1():
     Position([Member("Dec"), Member("count")])
     ]
     cellSet.axis[0].Positions = [
-    Position([Member("France"), Member("A1"), Member("B1")]),
     Position([Member("France"), Member("A1"), Member("B2")]),
     Position([Member("France"), Member("A2"), Member("B1")]),
     Position([Member("France"), Member("A2"), Member("B2")]),
+    Position([Member("France"), Member("A1"), Member("B1")]),
     Position([Member("France"), Member("A3"), Member("B1")]),
     Position([Member("France"), Member("A3"), Member("B2")]),
     Position([Member("France"), Member("A4"), Member("B1")]),
@@ -60,6 +60,10 @@ def jdefault(o):
 
 if __name__ == '__main__':
     print data1()
-
+    data = '{"nAxis":2,"cells":{"cells":[[194,883,91,215,109],[584,876,275,357,21],[625,43,190,256,37],[527,905,110,227,233],[408,688,388,483,163],[92,309,304,69,161]]},"axis":[{"Positions":[{"Members":[{"name":"France"}]},{"Members":[{"name":"USA"}]},{"Members":[{"name":"Japan"}]},{"Members":[{"name":"England"}]},{"Members":[{"name":"Italy"}]}],"n":0},{"Positions":[{"Members":[{"name":"Jan"},{"name":"pnl"}]},{"Members":[{"name":"Jan"},{"name":"count"}]},{"Members":[{"name":"Mar"},{"name":"pnl"}]},{"Members":[{"name":"Mar"},{"name":"count"}]},{"Members":[{"name":"Apr"},{"name":"pnl"}]},{"Members":[{"name":"Apr"},{"name":"count"}]}],"n":1}]}'
+    data = json.loads(data) #works with data1() also
+    cells = data['cells']['cells']
+    print cells
+    print cells[0][0]
 
     

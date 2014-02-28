@@ -14,32 +14,35 @@
 //                    'SELECT NON EMPTY {                 [Measures].[QTY.LONG],             [Measures].[QTY.SHORT],             [Measures].[QTY.NET],             [Measures].[QTY.GROSS],             [Measures].[VALUE.LONG],             [Measures].[VALUE.SHORT],             [Measures].[VALUE.NET],             [Measures].[VALUE.GROSS]     } ON COLUMNS,             NON EMPTY CrossJoin(             Hierarchize(                     [Source].[Source].Members             ),             Hierarchize(                     [Aggression].[Aggression].Members             )     ) ON ROWS     FROM [TradesCube];'+
 //                    'SELECT NON EMPTY {                 [Measures].[QTY.LONG],             [Measures].[QTY.SHORT],             [Measures].[QTY.NET],             [Measures].[QTY.GROSS],             [Measures].[VALUE.LONG],             [Measures].[VALUE.SHORT],             [Measures].[VALUE.NET],             [Measures].[VALUE.GROSS]     } ON COLUMNS,             CrossJoin(                     Hierarchize(                             [Source].[Source].Members                     ),                     [Security].[Sector].Members             ) ON ROWS     FROM [TradesCube];';
 
-var queries = "SELECT NON EMPTY DrillDownLevel([Bookings].[Desk].[ALL].[AllMember]) ON ROWS FROM [EquityDerivativesCube]"
-var wsUri = "ws://192.168.1.22:8080/socketQueryEngine";
+// var queries = "SELECT NON EMPTY DrillDownLevel([Bookings].[Desk].[ALL].[AllMember]) ON ROWS FROM [EquityDerivativesCube]"
 
-function initWS() {
-    setTimeout(testWebSocket(queries, new WebSocket(wsUri)),1000);
-}
+// function initWS() {
+//     setTimeout(testWebSocket(queries, new WebSocket(wsUri)),1000);
+// }
 
-function testWebSocket(queryStr, websocket) {
-    console.log(queryStr);
-    websocket.onopen = function(evt) { 
-       websocket.send(encodeURIComponent(queries));
+var wsUri = "ws://192.168.1.22:8080/socketQueryEngine";//server adress
+function createWebSocket(queryStr) {
+    var ws = new WebSocket(wsUri)
+    ws.onopen = function(evt) { 
+       ws.send(encodeURIComponent(queryStr));
     };
-    websocket.onclose = function(evt) { 
+    ws.onclose = function(evt) { 
         console.log("close");
     };
-    websocket.onmessage = function(evt) { 
+    ws.onmessage = function(evt) { 
         var newData = eval('(' + evt.data + ')');
+        console.log("newData:");
         console.log(newData);
+        console.log(evt.data);
+        table.setState({ data: newData });
     };
-    websocket.onerror = function(evt) { 
+    ws.onerror = function(evt) { 
         console.log("Error: "+evt.data);
     };
 }
 
-    // updates = JSON.parse(evt.data);
-    // for (cellId in updates) {
-    //     updates[cellId];
-    // }
+// updates = JSON.parse(evt.data);
+// for (cellId in updates) {
+//     updates[cellId];
+// }
 

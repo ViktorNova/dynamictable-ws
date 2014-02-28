@@ -87,7 +87,7 @@ React.renderComponent(
 );
 
 var table = React.renderComponent(
-  <Table data={data10}/>,
+  <Table data={data13}/>,
   document.getElementById('pivotTable')
 );
 

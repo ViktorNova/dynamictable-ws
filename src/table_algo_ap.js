@@ -3,11 +3,13 @@
 //Table rendering function from data in JSON format
 function tableRendering(myData){
 	console.log(myData);
-	var d = myData.axes[0].positions.length;//height of the header column
-	var b = myData.axes[0].positions[0].members.length;//width of the header row
-	var c = myData.axes.length > 1 ? myData.axes[1].positions[0].members.length : 0;//height of the header column
-	var a = myData.axes.length > 1 ? myData.axes[1].positions.length : 1;//height of the header row
-	console.log("a= "+a+" ; "+"b= "+b+" ; "+"c= "+c+" ; "+"d= "+d);
+	convert(myData);//convert the CellSetDTO
+	var format = getFormat(myData);
+	var a = format[0];
+	var b = format[1];
+	var c = format[2];
+	var d = format[3];
+	console.log("a="+a+" ; "+"b="+b+" ; "+"c="+c+" ; "+"d="+d);
 
 	var rows = [];//store all the Row components
 	var map = {};
@@ -29,7 +31,7 @@ function tableRendering(myData){
 					if(nextColValue == value && j+1<a+b){
 						colspan += 1;//increase colspan if the following value is the same
 					}else{
-						var rowspan = computeRowSpan(value, myData, c, b, d, i, j);//compute rowspan
+						var rowspan = computeRowSpan(value, myData, a, c, b, d, i, j);//compute rowspan
 						if(rowspan>1){
 							for(var m = i+1; m<i+rowspan; m += 1){
 								for(var n = j-colspan+1; n<=j; n += 1){
@@ -57,19 +59,26 @@ function tableRendering(myData){
 //return the value of a cell for a given position (i,j)
 function cellValue(myData, a, c, b, i, j){
 	var value = "";
-	if(i<c && j>=b && myData.axes.length > 1)
-		value = myData.axes[1].positions[j-b].members[i].displayName;
-	else if(i>=c && j<b)
-		value = myData.axes[0].positions[i-c].members[j].displayName;
-	else if(i>=c && j>=b)
-		value = myData.cells[(i-c)*a+(j-b)].formattedValue;
+	if(i<c && j>=b)
+		value = myData.axes[0].positions[j-b].members[i].displayName;
+	else if(i>=c && j<b){
+		var index = myData.axes.length > 1 ? 1 : 0;
+		value = myData.axes[index].positions[i-c].members[j].displayName;
+	}else if(i>=c && j>=b){
+		var currentOrdinal = (i-c)*a+(j-b);
+		for(var k = 0; k < myData.cells.length; k += 1)
+			if(myData.cells[k].ordinal == currentOrdinal){
+				value = myData.cells[k].formattedValue;
+				break;
+			}
+	}
 	return value;
 }
 
 //For a given column, compute the number of consecutive occurrences of a value (input parameter) 
-function computeRowSpan(value, myData, c, b, d, i, j){
+function computeRowSpan(value, myData, a, c, b, d, i, j){
 	var occ = 1;
-	while((i<c || j<b) && i+occ<c+d && value == cellValue(myData, c, b, i+occ, j)){
+	while((i<c || j<b) && i+occ<c+d && value == cellValue(myData, a, c, b, i+occ, j)){
 		occ += 1;
 	}
 	return occ;
@@ -79,3 +88,25 @@ function computeRowSpan(value, myData, c, b, d, i, j){
 function Cantor(m, n){
 	return 1/2*(m+n)*(m+n+1)+n;
 }
+
+function getFormat(myData){
+	var len = myData.axes.length;
+	var a, b, c, d;
+	if(len == 1){
+		var axis = myData.axes[0];
+		var index = axis.index;
+		a = index == 0 ? axis.positions.length : 1;
+		b = index == 0 ? 0 : axis.positions[0].members.length;
+		c = index == 0 ? axis.positions[0].members.length : 0;
+		d = index == 0 ? 1 : axis.positions.length;
+	}else{
+		a = myData.axes[0].positions.length;//width of the header column
+		b = myData.axes[1].positions[0].members.length;//width of the header row
+		c = myData.axes[0].positions[0].members.length;//height of the header column
+		d = myData.axes[1].positions.length;//height of the header row
+	}
+	return [a, b, c, d];
+}
+
+
+

@@ -27,7 +27,8 @@ function convert(cellSetDto){
 	var n = cellSetDto.axes.length;
 	for(var i = 0; i<n; i += 1){
 	    var axis = cellSetDto.axes[i];
-	    var max = maxLengthPath(axis);console.log(max);
+	    var max = maxLengthPath(axis);
+	    // console.log(max);
 		var positions = axis.positions;
 		var nPos = positions.length;
 		for(var j = 0; j<nPos; j += 1){

@@ -1,0 +1,371 @@
+{
+    "axes": [
+        {
+            "index": 0,
+            "hierarchies": [
+                {
+                    "dimension": "Underlyings",
+                    "name": "Products",
+                    "ordinal": 2
+                }
+            ],
+            "positions": [
+                {
+                    "members": [
+                        {
+                            "displayName": "AllMember",
+                            "levelName": "ALL",
+                            "path": {
+                                "path": [
+                                    "AllMember"
+                                ]
+                            },
+                            "displayInfo": 65538,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "LISTED",
+                            "levelName": "ProductType",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "LISTED"
+                                ]
+                            },
+                            "displayInfo": 2,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "OTC",
+                            "levelName": "ProductType",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "OTC"
+                                ]
+                            },
+                            "displayInfo": 196610,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "BARRIER OPTION",
+                            "levelName": "ProductName",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "OTC",
+                                    "BARRIER OPTION"
+                                ]
+                            },
+                            "displayInfo": 0,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "EQUITY SWAP",
+                            "levelName": "ProductName",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "OTC",
+                                    "EQUITY SWAP"
+                                ]
+                            },
+                            "displayInfo": 131072,
+                            "properties": null
+                        }
+                    ]
+                }
+            ],
+            "memberProperties": null
+        },
+        {
+            "index": 1,
+            "hierarchies": [
+                {
+                    "dimension": "Bookings",
+                    "name": "Status",
+                    "ordinal": 5
+                }
+            ],
+            "positions": [
+                {
+                    "members": [
+                        {
+                            "displayName": "AllMember",
+                            "levelName": "ALL",
+                            "path": {
+                                "path": [
+                                    "AllMember"
+                                ]
+                            },
+                            "displayInfo": 65538,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "LIVE",
+                            "levelName": "IsSimulated",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "LIVE"
+                                ]
+                            },
+                            "displayInfo": 65538,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "DONE",
+                            "levelName": "Status",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "LIVE",
+                                    "DONE"
+                                ]
+                            },
+                            "displayInfo": 0,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "MATCHED",
+                            "levelName": "Status",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "LIVE",
+                                    "MATCHED"
+                                ]
+                            },
+                            "displayInfo": 131072,
+                            "properties": null
+                        }
+                    ]
+                },
+                {
+                    "members": [
+                        {
+                            "displayName": "SIMULATION",
+                            "levelName": "IsSimulated",
+                            "path": {
+                                "path": [
+                                    "AllMember",
+                                    "SIMULATION"
+                                ]
+                            },
+                            "displayInfo": 1,
+                            "properties": null
+                        }
+                    ]
+                }
+            ],
+            "memberProperties": null
+        }
+    ],
+    "slicerAxis": null,
+    "cells": [
+        {
+            "ordinal": 23,
+            "value": 1042,
+            "formattedValue": "1042",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 8,
+            "value": 2024,
+            "formattedValue": "2024",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 16,
+            "value": 1901,
+            "formattedValue": "1901",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 19,
+            "value": 707,
+            "formattedValue": "707",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 4,
+            "value": 1996,
+            "formattedValue": "1996",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 18,
+            "value": 955,
+            "formattedValue": "955",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 1,
+            "value": 5401,
+            "formattedValue": "5401",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 24,
+            "value": 626,
+            "formattedValue": "626",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 9,
+            "value": 1370,
+            "formattedValue": "1370",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 10,
+            "value": 3550,
+            "formattedValue": "3550",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 21,
+            "value": 1682,
+            "formattedValue": "1682",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 6,
+            "value": 3719,
+            "formattedValue": "3719",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 7,
+            "value": 3394,
+            "formattedValue": "3394",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 5,
+            "value": 7113,
+            "formattedValue": "7113",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 17,
+            "value": 1662,
+            "formattedValue": "1662",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 14,
+            "value": 663,
+            "formattedValue": "663",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 13,
+            "value": 1069,
+            "formattedValue": "1069",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 22,
+            "value": 1668,
+            "formattedValue": "1668",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 20,
+            "value": 3350,
+            "formattedValue": "3350",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 15,
+            "value": 3563,
+            "formattedValue": "3563",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 0,
+            "value": 1000,
+            "formattedValue": "1000",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 11,
+            "value": 1818,
+            "formattedValue": "1818",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 3,
+            "value": 3066,
+            "formattedValue": "3066",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 12,
+            "value": 1732,
+            "formattedValue": "1732",
+            "previousValue": null,
+            "properties": null
+        },
+        {
+            "ordinal": 2,
+            "value": 5062,
+            "formattedValue": "5062",
+            "previousValue": null,
+            "properties": null
+        }
+    ],
+    "cellProperties": null
+}

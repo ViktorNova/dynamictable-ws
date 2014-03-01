@@ -80,18 +80,3 @@ var handlerReactjs = function(dataNew){
   currentData = dataNew;
 	table.setState({data : dataNew});
 }
-
-React.renderComponent(
-  <RequestButtons handler={handlerReactjs}/>,
-  document.getElementById('requestButtons')
-);
-
-var table = React.renderComponent(
-  <Table data={data13}/>,
-  document.getElementById('pivotTable')
-);
-
-//override boostrap css for width (100% normaly)
-document.getElementById('pivotTable').style.width = "10px";
-
-

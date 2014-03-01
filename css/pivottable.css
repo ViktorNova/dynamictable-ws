@@ -33,3 +33,8 @@ to {background-color: white;}
     animation: mySecond 2.2s;
 	-webkit-animation: mySecond 2.2s; /* Safari and Chrome */
 }
+
+.space-top-bottom{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}

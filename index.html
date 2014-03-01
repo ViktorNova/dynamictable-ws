@@ -4,6 +4,8 @@
   <!-- Boostrap css for buttons + table and animations for cells -->
   <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
   <link rel="stylesheet" type="text/css" href="css/pivottable.css"/>
+  <script src="jquery/jquery-1.11.0.min.js"></script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
 
   <!-- load React library -->
   <script src="src/react.js"></script>
@@ -12,13 +14,11 @@
   <!-- hard coded data in JSON format -->
   <script type="text/jsx" src="src/dataForTest.js"></script>
   <!-- convert the CellSetDTO into an other structure for rendering -->
- <script src="src/convertDTO.js"></script>
+  <script src="src/convertDTO.js"></script>
   <!-- rendering table algorithm, mainly pure JS | version for ap -->
   <script type="text/jsx" src="src/table_algo_ap.js"></script>
   <!-- rendering table algorithm, mainly pure JS | version for tornado server -->
-  <!-- <script type="text/jsx" src="src/table_algo.js"></script> -->
   <!-- function to open a websocket-->
-  <script type="text/jsx" src="src/websocket.js"></script>
   <script type="text/jsx" src="src/websocket_ap.js"></script>
   <!-- Buttons on the top of the app -->
   <script type="text/jsx" src="src/RequestButtons.js"></script>
@@ -27,31 +27,13 @@
   <!-- rendering wizard -->
   <script type="text/jsx" src="src/wizard.js"></script>
 
+  <!-- entry point -->
+  <script type="text/jsx" src="src/index.js"></script>
+
 </head>
 <body>
 
-<!--   <div style="margin: 10px;">
-    <h3>Pivot table</h3>
-    <textarea rows="3"></textarea>
-    <div id="requestButtons" style="margin-bottom: 15px;"></div>
-    <div id="pivotTable"></div>
-  </div> -->
-
-  <div class="container-fluid">
-  <h3>Pivot table</h3>
-    <div class="row-fluid">
-      <div class="span2">
-        <!--Sidebar content // wizard -->
-        <div id="wizard"></div>
-      </div>
-      <div class="span10">
-        <!--Body content // pivot table-->
-        <div id="requestButtons" style="margin-bottom: 15px;"></div>
-        <div id="pivotTable"></div>
-      </div>
-    </div>
-  </div>
-
+<div class="container" id="main"></div>
 
 </body>
 </html>

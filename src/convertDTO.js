@@ -23,7 +23,9 @@ function maxLengthPath(axis){
 	return maxArray;
 }
 
-function convert(cellSetDto){
+var total = "";//Total "; //not now
+function convert(cellSetDtoInit){
+	var cellSetDto = JSON.parse(JSON.stringify(cellSetDtoInit));//create a copy of the object
 	var n = cellSetDto.axes.length;
 	for(var i = 0; i<n; i += 1){
 	    var axis = cellSetDto.axes[i];
@@ -42,9 +44,9 @@ function convert(cellSetDto){
 			     //first condition to avoid AllMember member
 			     if(member.path.path.length > 1 && k+1 < nMem && members[k+1].levelName == "ALL"){
 			     	dispNameTotal = member.displayName;
-			     	member.displayName = "Total "+dispNameTotal;
+			     	member.displayName = total+dispNameTotal;
 			     }else if(dispNameTotal != null && member.levelName == "ALL"){
-			     	member.displayName = "Total "+dispNameTotal;
+			     	member.displayName = total+dispNameTotal;
 			     }
 
 			     if(path.length > 2){
@@ -60,5 +62,17 @@ function convert(cellSetDto){
 			     }
 			}
 		}
+	}
+	return cellSetDto;//return the new modified cell set
+}
+
+function replaceNewCells(data, newCells){
+	for(var i = 0; i < newCells.length; i += 1){
+		var currentOrdinal = newCells[i].ordinal;
+		for(var k = 0; k < data.cells.length; k += 1)
+			if(data.cells[k].ordinal == currentOrdinal){
+				data.cells[k] = newCells[i];
+				break;
+			}
 	}
 }

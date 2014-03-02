@@ -5,18 +5,18 @@ var Cell = React.createClass({
     return nextProps.cellValue != this.props.cellValue; 
   },
   /* uncomment these two methods to see what has changed between updates */
-  // componentDidMount: function(){
-  //  this.getDOMNode().className= "cell";
-  // },
-  // componentWillUpdate: function(){
-  //  if(this.getDOMNode() != null){
-  //    this.getDOMNode().className= "cell2";
-  //    var self = this;
-  //    setTimeout(function(){
-  //      self.getDOMNode().className= "";
-  //    }, 2300);
-  //  }
-  // },
+  componentDidMount: function(){
+   this.getDOMNode().className= "cell";
+  },
+  componentWillUpdate: function(){
+   if(this.getDOMNode() != null){
+     this.getDOMNode().className= "cell2";
+     var self = this;
+     setTimeout(function(){
+       self.getDOMNode().className= "";
+     }, 1010);
+   }
+  },
   render: function () {
     return (
       <td key={this.props.key} rowSpan={this.props.rowspan} colSpan={this.props.colspan}>{this.props.cellValue}</td>
@@ -30,19 +30,6 @@ var Header = React.createClass({
     || nextProps.rowspan != this.props.rowspan 
     || nextProps.colspan != this.props.colspan;
   },
-  /* uncomment these two methods to see what has changed between updates */
-  // componentDidMount: function(){
-  //  this.getDOMNode().className= "cell";
-  // },
-  // componentWillUpdate: function(){
-  //  if(this.getDOMNode() != null){
-  //    this.getDOMNode().className= "cell2";
-  //    var self = this;
-  //    setTimeout(function(){
-  //      self.getDOMNode().className= "";
-  //    }, 2300);
-  //  }
-  // },
   render: function () {
     return (
       <th key={this.props.key} rowSpan={this.props.rowspan} colSpan={this.props.colspan}>{this.props.cellValue}</th>
@@ -59,24 +46,19 @@ var Row = React.createClass({
 });
 
 var Table = React.createClass({
-	getInitialState: function() {
-		return {
-			data: this.props.data,
-		};
-	},
 	render: function () {
 		return (
 			<table className="table table-bordered"><tbody>
 			{
-				tableRendering(this.state.data)
+				tableRendering(this.props.data)
 			}
 			</tbody></table>
 			); 
 	}
 });
 
-var currentData = data;//access anytime to the current data model
-var handlerReactjs = function(dataNew){
-  currentData = dataNew;
-	table.setState({data : dataNew});
-}
+// var currentData = data;//access anytime to the current data model
+// var handlerReactjs = function(dataNew){
+//   currentData = dataNew;
+// 	table.setState({data : dataNew});
+// }

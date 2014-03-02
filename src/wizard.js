@@ -1,19 +1,18 @@
 /** @jsx React.DOM */
 
-var MdxEditor = React.createClass({
-	render: function () {
-		return (
-			<textarea className="form-control space-top-bottom" rows="15"></textarea>
-		);
-	}
-});
-
 var Wizard = React.createClass({
+	getInitialState: function() {
+		return {
+			connectState: "label-default",
+			info: "Not connected",
+		};
+	},
 	run: function(){
-		createWebSocket(this.refs.refMdxEditor.getDOMNode().value);
+		webSocket = createWebSocket(this.refs.refMdxEditor.getDOMNode().value, this);
 	},
 	clear: function(){
 		this.refs.refMdxEditor.getDOMNode().value = "";
+		webSocket.close();
 	},
 	render: function () {
 		return (
@@ -24,18 +23,25 @@ var Wizard = React.createClass({
 					<ReqButton title={"Clear"} className={"btn"} onclickHandler={this.clear}/>
 				</div>
 					<div className="pull-right">
-						<ConnectionLabel connectState={"label-default"} info={"Not connected"}/>
+						<ConnectionLabel connectState={this.state.connectState} info={this.state.info}/>
 					</div>
 			</div>
 		);
 	}
 });
 
+var MdxEditor = React.createClass({
+	render: function () {
+		return (
+			<textarea className="form-control space-top-bottom" rows="15" defaultValue="SELECT NON EMPTY CrossJoin(   Hierarchize(     DrilldownLevel(       [Bookings].[Desk].[ALL].[AllMember]     )   ),   Hierarchize(     DrilldownLevel(       [Underlyings].[Products].[ALL].[AllMember]     )   ) ) ON ROWS  FROM [EquityDerivativesCube]  WHERE [Measures].[pnl.SUM]"></textarea>
+		);
+	}
+});
+
 var ConnectionLabel = React.createClass({
 	render: function () {
-		var label = "label "+this.props.connectState;
 		return (
-			<span className={label}>{this.props.info}</span>
+			<span className={"label "+this.props.connectState}>{this.props.info}</span>
 		);
 	}
 });

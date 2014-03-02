@@ -24,14 +24,14 @@ to {background-color: white;}
 
 .cell{
     background-color: white;
-    animation: myfirst 2.2s;
-	-webkit-animation: myfirst 2.2s; /* Safari and Chrome */
+    animation: myfirst 1.0s;
+	-webkit-animation: myfirst 1.0s; /* Safari and Chrome */
 }
 
 .cell2{
     background-color: white;
-    animation: mySecond 2.2s;
-	-webkit-animation: mySecond 2.2s; /* Safari and Chrome */
+    animation: mySecond 1.0s;
+	-webkit-animation: mySecond 1.0s; /* Safari and Chrome */
 }
 
 .space-top-bottom{

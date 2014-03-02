@@ -2,8 +2,9 @@
 
 //Table rendering function from data in JSON format
 function tableRendering(myData){
+	console.log("myData");
 	console.log(myData);
-	convert(myData);//convert the CellSetDTO
+	// convert(myData);//convert the CellSetDTO
 	var format = getFormat(myData);
 	var a = format[0];
 	var b = format[1];

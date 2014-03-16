@@ -1,6 +1,8 @@
 dynamictable-ws
 ===============
 
+THIS PROJECT IS ABORTED, new one is: [https://github.com/azeq/reactoristhefuture](https://github.com/azeq/reactoristhefuture)
+
 **Note**: Personnal project, nothing concrete in there. 
 
 **Techno used**: ReactJs, Tornado, Python, JavaScript
